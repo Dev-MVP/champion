@@ -1,4 +1,4 @@
-export const API_URL = "http://91.201.6.108:3389/ufc/v1/";
+export const API_URL = "/ufc/v1/rank/weight";
 export const PLAYERS = [
   {
     textclass: "text-img009",

@@ -1,9 +1,12 @@
 import axios from "axios";
 import { API_URL } from "./../config/constant";
-axios(API_URL).then((res) => {
-  console.log(res);
-});
-const api = "";
+export const getData = {
+     axios(API_URL);
+}
+// axios(API_URL).then((res) => {
+//   console.log(res);
+// });
+// const api = "";
 //   baseURL: API_URL,
 //   method: "GET",
 //   responseType: "json",

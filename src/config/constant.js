@@ -1,4 +1,4 @@
-export const API_URL = "/ufc/v1/rank/weight";
+export const API_URL = "/ufc/v1/";
 export const PLAYERS = [
   {
     textclass: "text-img009",

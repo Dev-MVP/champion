@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-charts";
 
-const FighterGrapch2 = ({ submissionTypePerYear }) => {
+const FighterColumn = ({ round_win_rate_per_year }) => {
     const [submissionTypePerYearData, setSubmissionTypePerYear] = useState([]);
 
+    const series = React.useMemo(
+        () => ({
+            type: "bar",
+        }),
+        []
+    );
     const axes = React.useMemo(
         () => [
-            { primary: true, type: "linear", color: "#F29D38", position: "bottom" },
-            { primary: false, type: "linear", position: "left" },
+            { primary: true, type: "ordinal", position: "bottom" },
+            { position: "left", type: "linear", stacked: false },
         ],
         []
     );
-
     useEffect(() => {
         let a = {};
-        submissionTypePerYear.forEach((yearObj) => {
-            const year = Object.keys(yearObj)[0];
-            yearObj[year].forEach((rec) => {
+        round_win_rate_per_year.forEach((yearObj) => {
+            const year = yearObj["year"];
+            yearObj["data"].forEach((rec) => {
                 a = {
                     ...a,
-                    [rec.sub_type]: {
-                        label: rec.sub_type,
+                    [rec.round]: {
+                        label: rec.round,
                         data: [
-                            ...(a[rec.sub_type] ? a[rec.sub_type].data : []),
+                            ...(a[rec.round] ? a[rec.round].data : []),
                             {
                                 primary: isNaN(year) ? 0 : parseInt(year),
-                                secondary: parseInt(rec.count),
+                                secondary: parseInt(rec.round),
                             },
                         ],
                     },
@@ -53,7 +58,7 @@ const FighterGrapch2 = ({ submissionTypePerYear }) => {
                                 overflow: "hidden",
                             }}
                         >
-                            <Chart data={submissionTypePerYearData} axes={axes} dark />
+                            <Chart data={submissionTypePerYearData} series={series} axes={axes} dark />
                         </div>
                     </div>
                 </div>
@@ -62,4 +67,4 @@ const FighterGrapch2 = ({ submissionTypePerYear }) => {
     );
 };
 
-export default FighterGrapch2;
+export default FighterColumn;

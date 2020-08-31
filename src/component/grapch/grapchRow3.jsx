@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Chart } from "react-charts";
-
-const FighterGrapch2 = ({ submissionTypePerYear }) => {
+import { Chart } from 'react-charts'
+const FighterGrapch3 = ({ submissionTypePerYear }) => {
     const [submissionTypePerYearData, setSubmissionTypePerYear] = useState([]);
 
     const axes = React.useMemo(
@@ -11,7 +10,6 @@ const FighterGrapch2 = ({ submissionTypePerYear }) => {
         ],
         []
     );
-
     useEffect(() => {
         let a = {};
         submissionTypePerYear.forEach((yearObj) => {
@@ -38,28 +36,38 @@ const FighterGrapch2 = ({ submissionTypePerYear }) => {
     }, []);
 
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="stat-one pad__two-12">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <h2>Finishes statistics by year</h2>
-                        </div>
 
-                        <div
-                            style={{
-                                width: "100%",
-                                height: "calc(100% - 90px)",
-                                overflow: "hidden",
-                            }}
-                        >
-                            <Chart data={submissionTypePerYearData} axes={axes} dark />
-                        </div>
-                    </div>
-                </div>
+        <div className="stat-one pad__two-12">
+            <div className="d-flex justify-content-between align-items-center">
+                <h2>Fight Breakdown in UFC - Market share Year on Year</h2>
+                <label className="dropdown">
+                    <div className="dd-button dd_btn-color">
+                        Select Year
+                  </div>
+                    <input type="checkbox" className="dd-input" id="test" />
+                    <ul className="dd-menu diff__color-opt">
+                        <li>2014</li>
+                        <li>2015</li>
+                        <li>2016</li>
+                        <li>2017</li>
+                        <li>2018</li>
+                        <li>2019</li>
+                        <li>2020</li>
+                    </ul>
+
+                </label>
+            </div>
+            <div
+                style={{
+                    width: "100%",
+                    height: "calc(100% - 90px)",
+                    overflow: "hidden",
+                }}
+            >
+                <Chart data={submissionTypePerYearData} axes={axes} dark />
             </div>
         </div>
     );
 };
 
-export default FighterGrapch2;
+export default FighterGrapch3;
